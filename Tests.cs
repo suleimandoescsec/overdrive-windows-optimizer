@@ -13,6 +13,10 @@ namespace Overdrive {
   static void Check(string name,bool value){if(!value)throw new Exception("FAIL: "+name);passed.Add(name);}
   public static string Run(){string root=Path.Combine(Path.GetTempPath(),"Overdrive-selftest-"+Guid.NewGuid().ToString("N"));Store.TestRoot=root;try{return RunChecks();}finally{Store.TestRoot=null;string full=Path.GetFullPath(root);if(Cleaner.Under(full,Path.GetTempPath())&&Path.GetFileName(full).StartsWith("Overdrive-selftest-",StringComparison.Ordinal)&&Directory.Exists(full))Directory.Delete(full,true);}}
   static string RunChecks(){
+   Check("NVIDIA detected from PCI vendor",Gpu.Vendor("PCI\\VEN_10DE&DEV_1234")=="NVIDIA");
+   Check("AMD detected from PCI vendor",Gpu.Vendor("PCI\\VEN_1002&DEV_1234")=="AMD");
+   Check("Intel detected from PCI vendor",Gpu.Vendor("PCI\\VEN_8086&DEV_1234")=="Intel");
+   Check("Unknown GPUs are not guessed",Gpu.Vendor(null)=="Other");
    Check("Path boundary accepts child",Cleaner.Under(@"C:\Temp\a.bin",@"C:\Temp"));
    Check("Path boundary rejects sibling prefix",!Cleaner.Under(@"C:\Temp-other\a.bin",@"C:\Temp"));
    Check("Path boundary rejects root itself",!Cleaner.Under(@"C:\Temp",@"C:\Temp"));
