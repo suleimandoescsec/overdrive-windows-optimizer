@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 namespace Overdrive {
  public class ThankYou:Form {
-  public const string SupportUrl="https://donate.stripe.com/dRm8wP5ChgHy0EZ3GDaIM04";
+  public const string SupportUrl="https://donate.stripe.com/28EfZh0hX9f63Rb1yvaIM0a";
   public ThankYou(int count,long bytes,bool openBrowser){Text="OVERDRIVE — Thank you";ClientSize=new Size(530,465);StartPosition=FormStartPosition.CenterScreen;FormBorderStyle=FormBorderStyle.FixedDialog;MaximizeBox=false;MinimizeBox=false;BackColor=Color.FromArgb(10,13,19);ForeColor=Color.White;Font=new Font("Segoe UI",10);
    var chip=new Chip{Location=new Point(197,23),Size=new Size(136,120)};Controls.Add(chip);
    Controls.Add(new Label{Text="YOU'RE ALL SET.",TextAlign=ContentAlignment.MiddleCenter,Location=new Point(20,155),Size=new Size(490,47),Font=new Font("Segoe UI",22,FontStyle.Bold)});
