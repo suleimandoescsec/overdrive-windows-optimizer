@@ -1,0 +1,1 @@
+{"name":"overdrive-pc","version":"0.1.0","private":true,"description":"Windows optimization preview by Suleiman Alnsour","bin":{"overdrive-pc":"cli.js"},"os":["win32"],"files":["cli.js","portrait.txt","bin"]}
